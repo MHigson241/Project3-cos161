@@ -1,5 +1,7 @@
 package todolist;
 
+import java.time.LocalDate;
+
 /**Simple Task
  * (Maddy)
  * 
@@ -7,7 +9,9 @@ package todolist;
  */
 public class SimpleTask extends Task
 {
-
+	public SimpleTask(String title, String description, LocalDate dueDate) {
+		super(title, description, dueDate);
+	}
 	@Override
 	public String getTaskType() {
 		return "Basic Task";

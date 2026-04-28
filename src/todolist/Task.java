@@ -10,7 +10,6 @@ import java.time.LocalDate;
  * 	-String description		A description of the task
  * 	-boolean completed		True if completed, false if pending
  * 	-LocalDate dueDate		The date the task should be completed by
- * 	-int priority			The priority level of the task (Lower number means more urgent)
  * 
  * Methods:
  * 	-markComplete()			Sets complete to true
@@ -19,14 +18,29 @@ import java.time.LocalDate;
  * 	-getDetails()			Returns the task type and the output of the toString() method
  * 	-(Getters and setters for all attributes)
  */
-public abstract class Task 
+public abstract class Task implements Comparable<Task>
 {
-	private String title;
-	private String description;
-	private boolean completed = false;
-	private LocalDate dueDate;
-	private int priority;
+	protected String title;
+	protected String description;
+	protected boolean completed = false;
+	protected LocalDate dueDate;
 	
+	@Override
+    public int compareTo(Task other) {
+		if(this.dueDate.getDayOfYear() < other.dueDate.getDayOfYear()) {
+			return -1;
+		}else if(this.dueDate.getDayOfYear() > other.dueDate.getDayOfYear()) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	protected Task(String title, String description, LocalDate dueDate) {
+		this.title = title;
+		this.description = description;
+		this.dueDate = dueDate;
+	}
 	public void markComplete()
 	{
 		completed = true;
@@ -66,23 +80,13 @@ public abstract class Task
 	{
 		this.dueDate = dueDate;
 	}
-
-	public int getPriority()
-	{
-		return priority;
-	}
-
-	public void setPriority(int priority)
-	{
-		this.priority = priority;
-	}
 	
 	public String toString()
 	{
 		String str = title+"\n";
 		str += description+"\n";
 		str += "Due "+dueDate+"\n";
-		str += "Priority: "+priority+"\n";
+//		str += "Priority: "+priority+"\n";
 		if (completed) str += "Completed";
 		else str += "Pending";
 		

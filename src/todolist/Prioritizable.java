@@ -7,8 +7,7 @@ package todolist;
  * -setPriority 
  * -getPriority returns the priority of the task 0-10
  */
-public interface Prioritizable {
-	
+public interface Prioritizable {	
 	/**sets the value of priority
 	 * (Iris)
 	 * 

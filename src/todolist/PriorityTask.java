@@ -1,5 +1,7 @@
 package todolist;
 
+import java.time.LocalDate;
+
 /**Priority Task
  * (Maddy)
  * 
@@ -8,6 +10,11 @@ package todolist;
 public class PriorityTask extends Task implements Prioritizable
 {
 	private int priority;
+	
+	public PriorityTask(String title, String description, LocalDate dueDate, int priority) {
+		super(title, description, dueDate);
+		this.priority = priority;
+	}
 	
 	@Override
 	public String getTaskType() {

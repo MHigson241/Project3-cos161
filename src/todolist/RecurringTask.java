@@ -1,5 +1,7 @@
 package todolist;
 
+import java.time.LocalDate;
+
 /**Recurring Task
  * (Maddy)
  * 
@@ -7,6 +9,10 @@ package todolist;
  */
 public class RecurringTask extends Task implements Recurring
 {
+	public RecurringTask(String title, String description, LocalDate dueDate, String recurrencePattern) {
+		super(title, description, dueDate);
+		this.recurrencePattern = recurrencePattern;
+	}
 	private String recurrencePattern;
 	
 	@Override
