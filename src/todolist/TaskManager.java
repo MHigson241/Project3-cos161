@@ -17,20 +17,42 @@ public class TaskManager {
 	
 	/**adds a simple task
 	 * (Iris)
-	 * @param title
-	 * @param description
-	 * @param dueDate
+	 * @param title			name of task
+	 * @param description	task description
+	 * @param dueDate		the date that the task is due
 	 */
 	public void addSimpleTask(String title, String description, LocalDate dueDate) {
 		Task t = new SimpleTask(title, description, dueDate);
 		toDo.add(t);
 	}
+	/**adds a priority task
+	 * 
+	 * @param title			name of task
+	 * @param description	taask description
+	 * @param dueDate		the date that the task is due
+	 * @param priority		the priority of the task 0-10
+	 */
+	public void addPriorityTask(String title, String description, LocalDate dueDate, int priority) {
+		Task t = new PriorityTask(title, description, dueDate, priority);
+		toDo.add(t);
+	}
+	/**adds a recurring task
+	 * 
+	 * @param title			name of task
+	 * @param description	taask description
+	 * @param dueDate		the date that the task is due
+	 * @param recurring		how often it occurs
+	 */
+	public void addRecurringTask(String title, String description, LocalDate dueDate, String recurring) {
+		Task t = new RecurringTask(title, description, dueDate, recurring);
+		toDo.add(t);
+	}
 	
-	/**Removes a simple task given it's title
+	/**Removes a  task given it's title
 	 * (Iris)
 	 * @param title the titla of the task being removed
 	 */
-	public Boolean removeSimpleTask(String title) {
+	public Boolean removeTask(String title) {
 		Task t = findTask(title);
 		if(t == null) {
 			return false;
@@ -53,4 +75,15 @@ public class TaskManager {
 		return null;
 	}
 	
+	/**Marks a task complete
+	 * (Iris)
+	 * @param title	the name of the task being completed
+	 */
+	public void completed(String title) {
+		Task t = findTask(title);
+		if(t == null) {
+			return;
+		}
+		t.markComplete();
+	}
 }
