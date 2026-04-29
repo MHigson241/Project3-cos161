@@ -11,6 +11,11 @@ import myds.MyArrayList;
  * 
  * Methods:
  * -addSimpleTask(String title, String description, LocalDate dueDate)	adds a simple task
+ * -addPriorityTask(String title, String description, LocalDate dueDate, int priority)	adds a priorit task
+ * -addRecurringTask(String title, String description, LocalDate dueDate, String recurring) adds a recurring task
+ * -removeTask(String title)	removes a task
+ * -findTask(String title)	finds a task
+ * -completed(String title)	marks a task as completed
  */
 public class TaskManager {
 	public MyArrayList<Task> toDo = new MyArrayList<>();
