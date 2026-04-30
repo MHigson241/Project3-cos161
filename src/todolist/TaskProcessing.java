@@ -12,7 +12,7 @@ import java.util.Queue;
  * Methods:
  * -viewTasks()	Loads all recurring tasks for into the queue
  * -loadTasks()	gives all items in the queue
- * - 
+ * - processTask(Boolean complete)	processes next task allows to mark it complete
  */
 public class TaskProcessing {
 	public Queue<Task> tasks = new LinkedList<Task>();
@@ -41,6 +41,18 @@ public class TaskProcessing {
 			str += view.remove().toString() + "\n ---------------------";
 		}
 		return str;
+	}
+	/**processes next task allows to mark it complete
+	 * (Iris)
+	 * 
+	 * @param complete	a boolean representing if you want to mark the task completed
+	 * @return	A string description for printing the task
+	 */
+	public String processTask(Boolean complete) {
+		if(complete == true) {
+			tasks.peek().markComplete();
+		}
+		return tasks.remove().toString();
 	}
 	
 }
