@@ -43,8 +43,9 @@ public class UserInterface {
 				if(str.equals("1")) {//simple
 					System.out.println("Enter the name of the Task:");
 					title = scnr.next();
+					scnr.nextLine();
 					System.out.println("Enter a description for the Task:");
-					description = scnr.next();
+					description = scnr.nextLine();
 					System.out.println("Enter in how many days you want the Task to be due:");
 					if(scnr.hasNextInt()) {
 						days = scnr.nextInt();
@@ -59,8 +60,9 @@ public class UserInterface {
 				}else if(str.equals("2")) {//recurring
 					System.out.println("Enter the name of the Task:");
 					title = scnr.next();
+					scnr.nextLine();
 					System.out.println("Enter a description for the Task:");
-					description = scnr.next();
+					description = scnr.nextLine();
 					System.out.println("Enter in how many days you want the Task to be due:");
 					if(scnr.hasNextInt()) {
 						days = scnr.nextInt();
@@ -85,12 +87,13 @@ public class UserInterface {
 					}
 //					Task t = new RecurringTask(title, description, dueDate.plusDays(days), pattern);
 //					taskManagment.toDo.add(t);
-					taskManagment.addRecurringTask(title, description, dueDate.plusDays(days), str);
+					taskManagment.addRecurringTask(title, description, dueDate.plusDays(days), pattern);
 				}else if(str.equals("3")) {//priority
 					System.out.println("Enter the name of the Task:");
 					title = scnr.next();
+					scnr.nextLine();
 					System.out.println("Enter a description for the Task:");
-					description = scnr.next();
+					description = scnr.nextLine();
 					System.out.println("Enter in how many days you want the Task to be due:");
 					if(scnr.hasNextInt()) {
 						days = scnr.nextInt();
