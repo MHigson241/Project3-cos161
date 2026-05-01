@@ -122,6 +122,10 @@ public class UserInterface {
 				taskManagment.displayTasks();
 				run = continueMenu(scnr);
 			}else if(str.equals("3")) {//complete task
+				if(taskManagment.toDo.size()==0) {
+					System.out.println("No tasks found");
+					continue;
+				}
 				System.out.println("Enter the name of the Task you wish to mark completed:");
 				str = scnr.next();
 				if(taskManagment.findTask(str) == null) {
@@ -132,15 +136,19 @@ public class UserInterface {
 				System.out.println("The task " + str + " was completed.");
 				run = continueMenu(scnr);
 			}else if(str.equals("4")) {//remove task
-				System.out.println("Enter the name of the Task you wish to remove:");
-				str = scnr.next();
-				if(taskManagment.removeTask(str) == false) {
-					System.out.println("Task Removed");
-					run = continueMenu(scnr);
+				if(taskManagment.toDo.size()==0) {
+					System.out.println("No tasks found");
 					continue;
 				}
-				System.out.println("Invalid task name.");
+				System.out.println("Enter the name of the Task you wish to remove:");
+				str = scnr.next();
+				if(taskManagment.removeTask(str) == true) {
+					System.out.println("Task Removed");
+				}else {
+					System.out.println("Invalid task name.");
+				}
 				run = continueMenu(scnr);
+				continue;
 			}else if(str.equals("5")) {//undo action
 				taskManagment.undo();
 				run = continueMenu(scnr);

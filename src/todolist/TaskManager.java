@@ -84,12 +84,17 @@ public class TaskManager {
 	 * @return	returns a task or null if not found
 	 */
 	public Task findTask(String title) {
-		for(int i = 0; i < toDo.size()-1; i++) {
+		Task t = null;
+		for(int i = 0; i < toDo.size(); i++) {
 			if(toDo.get(i).getTitle().equals(title)) {
-				return toDo.get(i);
+				t = toDo.get(i);
 			}
 		}
-		return null;
+		if(t == null) {
+			return null;
+		}else {
+			return t;
+		}
 	}
 	
 	/**Marks a task complete
@@ -111,7 +116,10 @@ public class TaskManager {
 	 * Undoes the most recent action added to the recent actions stack
 	 */
 	public void undo()
-	{
+	{	
+		if(recent.isEmpty()) {
+			return;
+		}
 		Action act = recent.pop();	//Pop most recent action off the recent actions stack
 		Task t = act.getTask();		//Get the task being acted upon
 		int type = act.getType();	//Get the type of action (1 = add task, 2 = remove task, 3 = mark task as complete)
