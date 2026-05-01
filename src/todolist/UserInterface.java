@@ -53,8 +53,9 @@ public class UserInterface {
 						scnr.next();
 						continue;
 					}
-					Task t = new SimpleTask(title, description, dueDate.plusDays(days));
-					taskManagment.toDo.add(t);
+//					Task t = new SimpleTask(title, description, dueDate.plusDays(days));
+//					taskManagment.toDo.add(t);
+					taskManagment.addSimpleTask(title, description, dueDate.plusDays(days));
 				}else if(str.equals("2")) {//recurring
 					System.out.println("Enter the name of the Task:");
 					title = scnr.next();
@@ -82,8 +83,9 @@ public class UserInterface {
 					}else {
 						System.out.println("Invalid input");
 					}
-					Task t = new RecurringTask(title, description, dueDate.plusDays(days), pattern);
-					taskManagment.toDo.add(t);
+//					Task t = new RecurringTask(title, description, dueDate.plusDays(days), pattern);
+//					taskManagment.toDo.add(t);
+					taskManagment.addRecurringTask(title, description, dueDate.plusDays(days), str);
 				}else if(str.equals("3")) {//priority
 					System.out.println("Enter the name of the Task:");
 					title = scnr.next();
@@ -106,8 +108,9 @@ public class UserInterface {
 						continue;
 					}
 					if (priority >=1 && priority <= 10) {
-						Task t = new PriorityTask(title, description, dueDate.plusDays(days), priority);
-						taskManagment.toDo.add(t);
+//						Task t = new PriorityTask(title, description, dueDate.plusDays(days), priority);
+//						taskManagment.toDo.add(t);
+						taskManagment.addPriorityTask(title, description, dueDate.plusDays(days), priority);
 					}else {
 						System.out.println("Invalid input");
 					}
@@ -187,9 +190,22 @@ public class UserInterface {
 						+ "2. Filter by Priority\n"
 						+ "3. Filter by Type");
 				str = scnr.next();
-				if(str.equals(1 + "")) {
+				if(str.equals(1 + "")) 
+				{
+					System.out.println("Would you like pending or completed tasks?\n"
+							+ "1. Pending tasks\n"
+							+ "2. Completed tasks");
+					str = scnr.next();
 					
-					filter = taskManagment.filterByCompleted(true);
+					if (str.equals("1"))
+					{
+						filter = taskManagment.filterByCompleted(false);
+					}
+					else if (str.equals("2"))
+					{
+						filter = taskManagment.filterByCompleted(true);
+					}
+					
 				}else if(str.equals(2 + "")) {
 					System.out.println("Enter the priority 1-10 you wish to see:");
 					options = 10;

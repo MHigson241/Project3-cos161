@@ -36,9 +36,8 @@ public class TaskManager {
 	 */
 	public void addSimpleTask(String title, String description, LocalDate dueDate) {
 		Task t = new SimpleTask(title, description, dueDate);
-		recent.push(new Action(t, 1));
 		toDo.add(t);
-//		recent.push(new Action(t, 1));	//Add to recent actions stack for undo functionality (Maddy)
+		recent.push(new Action(t, 1));	//Add to recent actions stack for undo functionality (Maddy)
 	}
 	/**adds a priority task
 	 * 
@@ -124,13 +123,26 @@ public class TaskManager {
 		Action act = recent.pop();	//Pop most recent action off the recent actions stack
 		Task t = act.getTask();		//Get the task being acted upon
 		int type = act.getType();	//Get the type of action (1 = add task, 2 = remove task, 3 = mark task as complete)
-		//
-		if (type == 1) { 
-			toDo.remove(t);	//Undo add task
-		} else if (type == 2) {
-			toDo.add(t);		//Undo remove task
-		}else if (type == 3) {
-			t.undoComplete();	//Undo mark task as complete
+		
+		//Undo add task
+		if (type == 1)
+		{
+			System.out.println("Removing "+t.title+" from the ToDo list...");
+			toDo.remove(t);			
+		}
+		
+		//Undo remove task
+		else if (type == 2) 
+		{
+			System.out.println("Adding "+t.title+" back into the ToDo list...");
+			toDo.add(t);		
+		}
+		
+		//Undo mark task as complete
+		else if (type == 3) 
+		{
+			System.out.println("Marking "+t.title+" as incomplete...");
+			t.undoComplete();	
 		}
 	}
 	
