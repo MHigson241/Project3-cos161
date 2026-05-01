@@ -17,12 +17,11 @@ import java.util.Queue;
  */
 public class TaskProcessing {
 	public Queue<Task> tasks = new LinkedList<Task>();
-	TaskManager t = new TaskManager();
 	
 	/**Loads all recurring tasks for into the queue
 	 * (Iris)
 	 */
-	public void loadTasks() {
+	public void loadTasks(TaskManager t) {
 		tasks = new LinkedList<Task>();
 		for(int i = 0; i < t.toDo.size(); i++) {
 			if(t.toDo.get(i).getTaskType().equals("Recurring Task")) {
@@ -35,13 +34,14 @@ public class TaskProcessing {
 	 * 
 	 * @return	a string of all items in queue
 	 */
-	public String viewTasks() {
-		String str = "";
+	public void viewTasks() {
+		String str = "Tasks: \n";
 		Queue<Task> view = tasks;
 		for(int i = 0; i < view.size(); i++) {
-			str += view.remove().toString() + "\n ---------------------";
+			str += view.peek().toString() + "\n ---------------------\n";
+			view.remove();
 		}
-		return str;
+		System.out.println(str);
 	}
 	/**processes next task allows to mark it complete
 	 * (Iris)

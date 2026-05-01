@@ -153,10 +153,9 @@ public class UserInterface {
 				taskManagment.undo();
 				run = continueMenu(scnr);
 			}else if(str.equals("6")) {//load todays tasks
-				taskProcess.loadTasks();
+				taskProcess.loadTasks(taskManagment);
 				if(taskProcess.tasks.size() == 0) {
 					System.out.println("No Tasks loaded");
-					continue;
 				}else {
 					System.out.println("Tasks loaded");
 				}
