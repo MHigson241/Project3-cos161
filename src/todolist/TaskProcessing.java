@@ -24,7 +24,7 @@ public class TaskProcessing {
 	 */
 	public void loadTasks() {
 		tasks = new LinkedList<Task>();
-		for(int i = 0; i < t.toDo.size()-1; i++) {
+		for(int i = 0; i < t.toDo.size(); i++) {
 			if(t.toDo.get(i).getTaskType().equals("Recurring Task")) {
 				tasks.offer(t.toDo.get(i));
 			}
@@ -38,7 +38,7 @@ public class TaskProcessing {
 	public String viewTasks() {
 		String str = "";
 		Queue<Task> view = tasks;
-		for(int i = 0; i < view.size()-1; i++) {
+		for(int i = 0; i < view.size(); i++) {
 			str += view.remove().toString() + "\n ---------------------";
 		}
 		return str;

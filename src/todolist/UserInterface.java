@@ -154,11 +154,25 @@ public class UserInterface {
 				run = continueMenu(scnr);
 			}else if(str.equals("6")) {//load todays tasks
 				taskProcess.loadTasks();
+				if(taskProcess.tasks.size() == 0) {
+					System.out.println("No Tasks loaded");
+					continue;
+				}else {
+					System.out.println("Tasks loaded");
+				}
 				run = continueMenu(scnr);
 			}else if(str.equals("7")) {//view tasks for today
+				if(taskProcess.tasks.size() == 0) {
+					System.out.println("No Tasks to view");
+					continue;
+				}
 				taskProcess.viewTasks();
 				run = continueMenu(scnr);
 			}else if(str.equals("8")) {//process next task
+				if(taskProcess.tasks.size() == 0) {
+					System.out.println("No Tasks to process");
+					continue;
+				}
 				System.out.println("Enter 1 to mark task complete enter anything but 1 to continue:");
 				str = scnr.next();
 				if(str.equals(1 + "")) {
