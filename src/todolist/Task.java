@@ -41,9 +41,15 @@ public abstract class Task implements Comparable<Task>
 		this.description = description;
 		this.dueDate = dueDate;
 	}
+	
 	public void markComplete()
 	{
 		completed = true;
+	}
+	
+	public void undoComplete()
+	{
+		completed = false;
 	}
 
 	public String getTitle()
@@ -86,7 +92,6 @@ public abstract class Task implements Comparable<Task>
 		String str = title+"\n";
 		str += description+"\n";
 		str += "Due "+dueDate+"\n";
-//		str += "Priority: "+priority+"\n";
 		if (completed) str += "Completed";
 		else str += "Pending";
 		

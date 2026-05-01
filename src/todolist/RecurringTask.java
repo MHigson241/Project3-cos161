@@ -38,5 +38,18 @@ public class RecurringTask extends Task implements Recurring
 	{
 		return recurrencePattern;
 	}
+	
+	@Override
+	public String toString()
+	{
+		String str = title+"\n";
+		str += description+"\n";
+		str += "Due "+dueDate+"\n";
+		str += "Recurrence Pattern: "+recurrencePattern+"\n";
+		if (completed) str += "Completed";
+		else str += "Pending";
+		
+		return str;
+	}
 
 }

@@ -26,11 +26,26 @@ public class PriorityTask extends Task implements Prioritizable
 		return "Priority Task\n"+this.toString();
 	}
 	
+	@Override
+	public String toString()
+	{
+		String str = title+"\n";
+		str += description+"\n";
+		str += "Due "+dueDate+"\n";
+		str += "Priority: "+priority+"\n";
+		if (completed) str += "Completed";
+		else str += "Pending";
+		
+		return str;
+	}
+	
+	@Override
 	public void setPriority(int priority)
 	{
 		this.priority = priority;
 	}
 	
+	@Override
 	public int getPriority()
 	{
 		return priority;
